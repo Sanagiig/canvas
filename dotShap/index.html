@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>dotShap</title>
+</head>
+
+<body>
+    <canvas id="shapBoard"></canvas>
+    <div class="inputWrap">
+        <input id="textInput" type="text">
+    </div>
+    <script src="./index.js"> </script>
+    <script>
+        window.onload = function () {
+            var shap = new Shap();
+            shap.init('shapBoard', 'textInput');
+            shap.run();
+        }
+    </script>
+</body>
+
+</html>

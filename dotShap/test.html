@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            padding:0;
+            margin:0;
+            width:100%;
+            height:100%;
+        }
+        /* canvas{
+            width:50%;
+            height:100%;
+            float:left;
+        } */
+    </style>
+</head>
+<body>
+    <canvas id="c1"></canvas>
+    <canvas id="c2"></canvas>
+    <script>
+        var can1 = document.getElementById('c1');
+        var can2 = document.getElementById('c2');
+        var ctx1 = document.getElementById('c1').getContext('2d');
+        var ctx2 = document.getElementById('c2').getContext('2d');
+
+        var w = document.body.clientWidth ;
+        var h = document.body.clientHeight ;
+        var g= 4;
+        can1.width = can2.width = w / 2;
+        can1.height = can2.height = h /2;
+        ctx1.beginPath();
+        ctx1.arc(can1.width / 2, can1.height / 2,120,0 , Math.PI * 2,false);
+        ctx1.fill();
+
+        var d = ctx1.getImageData(0,0,w,h).data;
+        var dots = [];
+        var i = 0;
+        var x = 0;
+        var y = 0;
+        console.log('d',d.length)
+        while(i<d.length){
+            if(d[i+3] > 0){
+                dots.push({x:x,y:y});
+            }
+
+            i += g * 4;
+            x += g;
+            if(x > w ){
+                x = 0;
+                y += g;
+                i = y  * w * 4
+            }
+        }
+
+        ctx2.clearRect(0,0,w,h )
+        console.log('dots',dots);
+        for(var i=0;i<dots.length;i++){
+            var d = dots[i];
+            ctx2.beginPath();
+            ctx2.arc(d.x,d.y,1,0,Math.PI * 2,false);
+            ctx2.closePath();
+            ctx2.fill();
+        }
+
+    </script>
+</body>
+</html>

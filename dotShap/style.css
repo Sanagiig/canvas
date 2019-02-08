@@ -1,0 +1,28 @@
+html,body{
+    width:100%;
+    height:100%;
+    padding:0;
+    margin:0;
+}
+body{
+    position: relative;
+    background-color: rgb(95, 190, 253);
+    background: linear-gradient(rgb(159, 248, 159) 0%,rgb(95, 190, 253) 100% );
+}
+
+.inputWrap{
+    position: absolute;
+    width:100%;
+    line-height:30px;
+    text-align: center;
+    bottom:100px;
+}
+.inputWrap input[type="text"]{
+    text-align: center;
+    color:white;
+    border:none;
+    border-bottom:3px solid white;
+    outline: transparent;
+    background-color: transparent;
+    font-size:24px;
+}
